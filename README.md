@@ -1,27 +1,44 @@
-# App
+# Angular issue #42267
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.1.
+See https://github.com/angular/angular/issues/42267
 
-## Development server
+This app was generated with:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+```
+ng new  --strict --no-routing --style=css app
+```
 
-## Code scaffolding
+Running `yarn start` should compile without error, but it incorrectly fails with:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+yarn run v1.22.5
+$ ng serve
+✔ Browser application bundle generation complete.
 
-## Build
+Initial Chunk Files | Names         |    Size
+main.js             | main          | 0 bytes
+polyfills.js        | polyfills     | 0 bytes
+runtime.js          | runtime       | 0 bytes
+styles.css          | styles        | 0 bytes
+vendor.js           | vendor        | 0 bytes
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+                    | Initial Total | 0 bytes
 
-## Running unit tests
+Build at: 2021-05-26T07:41:00.355Z - Hash: e7cdce6c6be13af310f7 - Time: 6342ms
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Error: src/app/app.component.html:5:23 - error TS2322: Type 'null' is not assignable to type 'string | number'.
 
-## Running end-to-end tests
+5 <input type="number" [min]="null" [formControl]="control">
+                        ~~~
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+  src/app/app.component.ts:6:16
+    6   templateUrl: './app.component.html',
+                     ~~~~~~~~~~~~~~~~~~~~~~
+    Error occurs in the template of component AppComponent.
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
+
+```
